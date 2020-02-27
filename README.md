@@ -9,7 +9,7 @@
 2. run *make publish*
 3. run *npm link*
 3. run *make start* or run *brain-games*
-4. Chose game from the list below and play
+4. Chose game from the list below and have fun :)
 
 List of the available games below:
 
