@@ -13,7 +13,7 @@ export default (gameIntro, gameRunner) => {
   let question;
   let correctAnswer;
   let isGameContinue = true; // Changes to false after the wrong answer
-  for (let questions = 0; questions < totalQuestionsNum; questions += 1) {
+  for (let i = 0; i < totalQuestionsNum; i += 1) {
     if (isGameContinue) {
       const [correctResult, questionNum] = gameRunner();
       question = questionNum;
