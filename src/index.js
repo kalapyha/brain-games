@@ -5,7 +5,7 @@ import {
   getPlayerAnswer,
 } from './player';
 
-const totalQuestionsNum = 3; // Total amount of Questions during the Game
+const questionsCount = 3; // Total amount of Questions during the Game
 
 /* Game Engine */
 export default (gameIntro, gameRunner) => {
@@ -13,7 +13,7 @@ export default (gameIntro, gameRunner) => {
   let question;
   let correctAnswer;
   let isGameContinue = true; // Changes to false after the wrong answer
-  for (let i = 0; i < totalQuestionsNum; i += 1) {
+  for (let i = 0; i < questionsCount; i += 1) {
     if (isGameContinue) {
       const [correctResult, questionNum] = gameRunner();
       question = questionNum;

@@ -1,38 +1,33 @@
 import randomNumber from '../numbers';
 import gameInit from '..';
 
-const mathOperandsArr = ['+', '-', '*']; // Math operands
-const brainCalcGameIntro = 'What is the result of the expression?';
-let mathOperand;
+const mathOperands = ['+', '-', '*']; // Math operands
+const intro = 'What is the result of the expression?';
 
-const getRandomMathOperand = () => {
-  mathOperand = mathOperandsArr[Math.floor(Math.random() * mathOperandsArr.length)];
-  return mathOperand;
-};
+const getRandomMathOperand = () => mathOperands[Math.floor(Math.random() * mathOperands.length)];
 
-const defineExpression = (num1, num2) => {
-  switch (mathOperand) {
+const defineExpression = (num1, num2, operand) => {
+  switch (operand) {
     case ('+'):
       return num1 + num2;
     case ('-'):
       return num1 - num2;
-    case ('*'):
-      return num1 * num2;
     default:
-      throw console.error('Can\'t find Math operand');
+      return num1 * num2; // case (*)
   }
 };
 
 /* Game Runner */
-export const gameRunner = () => {
-  const num1 = randomNumber(1, 10); // first number
-  const num2 = randomNumber(1, 10); // second number
+export const playGame = () => {
+  const num1 = randomNumber(1, 20); // first number
+  const num2 = randomNumber(1, 20); // second number
+  const operand = getRandomMathOperand();
 
-  const question = `${num1} ${getRandomMathOperand()} ${num2}`;
-  const correctResult = `${defineExpression(num1, num2)}`;
+  const question = `${num1} ${operand} ${num2}`;
+  const correctResult = `${defineExpression(num1, num2, operand)}`;
   return [correctResult, question];
 };
 
 export default () => {
-  gameInit(brainCalcGameIntro, gameRunner);
+  gameInit(intro, playGame);
 };
