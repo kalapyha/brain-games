@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { getNumFromArr, getMathEquation, createRandomNumArr } from '../numbers';
+import randomNumber from '../numbers';
 import gameInit from '..';
 
 const brainGCDIntro = 'Find the greatest common divisor of given numbers.';
@@ -13,13 +13,13 @@ const defineGreatestDivider = (num1, num2) => {
   return num1;
 };
 
-const defineGCDAnswer = () => defineGreatestDivider(getNumFromArr(0), getNumFromArr(1));
-
 /* Game Runner */
 export const gameRunner = () => {
-  createRandomNumArr();
-  const question = getMathEquation();
-  const correctResult = defineGCDAnswer();
+  const num1 = randomNumber(1, 20); // first number
+  const num2 = randomNumber(1, 100); // second number
+  const question = `${num1} ${num2}`;
+
+  const correctResult = defineGreatestDivider(num1, num2);
   return [correctResult, question];
 };
 

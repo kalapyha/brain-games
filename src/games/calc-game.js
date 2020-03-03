@@ -1,4 +1,4 @@
-import { getNumFromArr, getMathEquation, createRandomNumArr } from '../numbers';
+import randomNumber from '../numbers';
 import gameInit from '..';
 
 const mathOperandsArr = ['+', '-', '*']; // Math operands
@@ -10,14 +10,14 @@ const getRandomMathOperand = () => {
   return mathOperand;
 };
 
-const defineExpression = () => {
+const defineExpression = (num1, num2) => {
   switch (mathOperand) {
     case ('+'):
-      return getNumFromArr(0) + getNumFromArr(1);
+      return num1 + num2;
     case ('-'):
-      return getNumFromArr(0) - getNumFromArr(1);
+      return num1 - num2;
     case ('*'):
-      return getNumFromArr(0) * getNumFromArr(1);
+      return num1 * num2;
     default:
       throw console.error('Can\'t find Math operand');
   }
@@ -25,9 +25,11 @@ const defineExpression = () => {
 
 /* Game Runner */
 export const gameRunner = () => {
-  createRandomNumArr();
-  const question = getMathEquation(getRandomMathOperand());
-  const correctResult = `${defineExpression()}`;
+  const num1 = randomNumber(1, 10); // first number
+  const num2 = randomNumber(1, 10); // second number
+
+  const question = `${num1} ${getRandomMathOperand()} ${num2}`;
+  const correctResult = `${defineExpression(num1, num2)}`;
   return [correctResult, question];
 };
 

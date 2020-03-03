@@ -1,4 +1,4 @@
-import { createRandomNumber, getRandomNum } from '../numbers';
+import randomNumber from '../numbers';
 import gameInit from '..';
 
 const brainProgressionIntro = 'What number is missing in the progression?';
@@ -8,17 +8,16 @@ let hiddenNum;
 
 const createProgressionArr = () => {
   progressionArr.length = 0; // reset arr
-  createRandomNumber(1, 20); // This is our first num in the array
-  const firstNum = getRandomNum();
+  const firstNum = randomNumber(); // This is our first num in the array
   progressionArr.push(firstNum); // Push this first num to the array
-  createRandomNumber(1, 90); // Creating another random num. It's gonna be our iterator.
+  const iter = randomNumber(1, 90); // Creating another random num. It's gonna be our iterator.
   for (let i = 0; i < numbersTotal; i += 1) { // less then 9 - numbersTotal
-    progressionArr.push(progressionArr[i] + getRandomNum()); // next num in arr = prev num + iter
+    progressionArr.push(progressionArr[i] + iter); // next num in arr = prev num + iter
   }
 };
 
 const hideNumInProgressionArr = (arr) => {
-  const randomHideNum = (Math.floor(Math.random() * 10)); // 10 is progressionArr.length
+  const randomHideNum = (Math.floor(Math.random() * arr.length));
   hiddenNum = arr[randomHideNum]; // init hidden num from arr
   const hideIndex = arr.indexOf(hiddenNum);
   arr.splice(hideIndex, 1, '..');
