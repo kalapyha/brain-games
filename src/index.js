@@ -7,14 +7,12 @@ export default (gameIntro, gameRunner) => {
   console.log(`${'\n'}'Welcome to the Brain Games!' ${'\n'} ${gameIntro} ${'\n'}`);
   const playerName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${playerName}! ${'\n'}`);
-  let question;
   let correctAnswer;
   let playerAnswer;
   let gameContinue = true; // Changes to false after the wrong answer
   for (let i = 0; i < questionsCount; i += 1) {
     if (gameContinue) {
-      const [correctResult, questionNum] = gameRunner();
-      question = questionNum;
+      const [correctResult, question] = gameRunner();
       correctAnswer = correctResult; // initialized correctAnswer to prompt in case of wrong answer
       console.log(`Question: ${question}`);
       playerAnswer = readlineSync.question('Your answer: ');

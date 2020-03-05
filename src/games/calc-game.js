@@ -15,7 +15,7 @@ const calculateExpression = (num1, num2, operand) => {
     case ('*'):
       return num1 * num2;
     default:
-      return -1; // default case
+      return false; // default case
   }
 };
 
