@@ -1,4 +1,4 @@
-import randomNumber from '../numbers';
+import randomNumber from '../random';
 import gameInit from '../index';
 
 const intro = 'Answer "yes" if given number is prime. Otherwise answer "no".';
@@ -13,14 +13,13 @@ const isPrime = (num) => {
   return true;
 };
 
-/* Game Runner */
-export const playGame = () => {
-  const num = randomNumber(1, 100);
-  const question = num;
-  const correctResult = isPrime(num) ? 'yes' : 'no';
+/* Game Round */
+const getRound = () => {
+  const question = randomNumber(1, 100);
+  const correctResult = isPrime(question) ? 'yes' : 'no';
   return [correctResult, question];
 };
 
 export default () => {
-  gameInit(intro, playGame);
+  gameInit(intro, getRound);
 };

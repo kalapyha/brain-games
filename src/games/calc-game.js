@@ -1,14 +1,12 @@
-import randomNumber from '../numbers';
-import gameInit from '..';
+import randomNumber from '../random';
+import playGame from '..';
 
 const mathSymbols = ['+', '-', '*']; // Math operands
 const intro = 'What is the result of the expression?';
 
-const mathSymbol = () => mathSymbols[randomNumber(0, 3)];
+const getMathSymbol = () => mathSymbols[randomNumber(0, 3)];
 
-// const getRandomMathOperand = () => mathSymbols[Math.floor(Math.random() * mathSymbols.length)];
-
-const defineExpression = (num1, num2, operand) => {
+const calculateExpression = (num1, num2, operand) => {
   switch (operand) {
     case ('+'):
       return num1 + num2;
@@ -21,17 +19,17 @@ const defineExpression = (num1, num2, operand) => {
   }
 };
 
-/* Game Runner */
-export const playGame = () => {
+/* Game Round */
+const getRound = () => {
   const num1 = randomNumber(1, 20); // first number
   const num2 = randomNumber(1, 20); // second number
-  const symbol = mathSymbol();
+  const symbol = getMathSymbol();
 
   const question = `${num1} ${symbol} ${num2}`;
-  const correctResult = `${defineExpression(num1, num2, symbol)}`;
+  const correctResult = calculateExpression(num1, num2, symbol);
   return [correctResult, question];
 };
 
 export default () => {
-  gameInit(intro, playGame);
+  playGame(intro, getRound);
 };
