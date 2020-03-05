@@ -5,7 +5,7 @@ import {
   getPlayerAnswer,
 } from './player';
 
-const questionsCount = 3; // Total amount of Questions during the Game
+const questionsCount = 30; // Total amount of Questions during the Game
 
 /* Game Engine */
 export default (gameIntro, gameRunner) => {
