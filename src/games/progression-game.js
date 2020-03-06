@@ -4,29 +4,24 @@ import playGame from '..';
 const intro = 'What number is missing in the progression?';
 const progrCount = 9; // Amount of numbers inside the progression
 
-const createProgression = (num) => {
-  const progression = [];
-  progression.push(randomNumber()); // Push first num to the array
-  const iter = randomNumber(1, 20); // Creating another random num. It's gonna be our iterator.
-  for (let i = 0; i < num; i += 1) { // less then progrCount - progrLength
+const createProgression = (startNum, iter, length, hiddenIndex) => {
+  const progression = [startNum];
+  for (let i = 0; i < length; i += 1) { // less then progrCount - progrLength
     progression.push(progression[i] + iter); // next num in arr = prev num + iter
   }
-  return progression;
-};
+  const hiddenNum = progression[hiddenIndex]; // init hidden num from progression
+  progression.splice(progression.indexOf(hiddenNum), 1, '..'); // hidden num
 
-const hideNumInProgressionArr = (arr) => {
-  const randomHideNum = (Math.floor(Math.random() * arr.length));
-  const hiddenNum = arr[randomHideNum]; // init hidden num from arr
-  arr.splice(arr.indexOf(hiddenNum), 1, '..');
-  return [arr, hiddenNum];
+  return [progression, hiddenNum];
 };
 
 /* Game Round */
 const getRound = () => {
-  const progressionArr = createProgression(progrCount);
-  const [arr, num] = hideNumInProgressionArr(progressionArr);
-  const question = arr.join(' ');
-  const correctResult = num;
+  const [progression, correctResult] = createProgression(randomNumber(1, 100),
+    randomNumber(1, 25),
+    progrCount,
+    randomNumber(0, progrCount));
+  const question = progression.join(' ');
   return [correctResult, question];
 };
 
