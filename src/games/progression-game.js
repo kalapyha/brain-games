@@ -10,7 +10,7 @@ const createProgression = (startNum, iter, length, hiddenIndex) => {
     progression.push(progression[i] + iter); // next num in arr = prev num + iter
   }
   const hiddenNum = progression[hiddenIndex]; // init hidden num from progression
-  progression.splice(progression.indexOf(hiddenNum), 1, '..'); // hidden num
+  progression.splice(progression.indexOf(hiddenNum), 1, '..'); // hide num
 
   return [progression, hiddenNum];
 };
