@@ -1,13 +1,13 @@
 import randomNumber from '../random';
 import playGame from '..';
 
-const mathSymbols = ['+', '-', '*']; // Math operands
+const signs = ['+', '-', '*'];
 const intro = 'What is the result of the expression?';
 
-const getMathSymbol = () => mathSymbols[randomNumber(0, 3)];
+const getMathSymbol = () => signs[randomNumber(0, signs.length)];
 
-const calculateExpression = (num1, num2, operand) => {
-  switch (operand) {
+const calculateExpression = (num1, num2, sign) => {
+  switch (sign) {
     case ('+'):
       return num1 + num2;
     case ('-'):

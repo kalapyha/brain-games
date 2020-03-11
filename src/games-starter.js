@@ -1,9 +1,9 @@
 import readlineSync from 'readline-sync';
-import runEvenGame from './games/even-game';
-import runCalcGame from './games/calc-game';
-import runGCDGame from './games/gcd-game';
-import runProgressionGame from './games/progression-game';
-import runPrimeGame from './games/prime-game';
+import runEvenGame from './games/even';
+import runCalcGame from './games/calc';
+import runGCDGame from './games/gcd';
+import runProgressionGame from './games/progression';
+import runPrimeGame from './games/prime';
 
 const menuChoice = () => {
   const playerChoice = readlineSync.question(`Choose game from the list below.\n
