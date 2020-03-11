@@ -19,7 +19,7 @@ export default (gameIntro, gameRunner) => {
       correctAnswer = correctResult; // initialized correctAnswer to prompt in case of wrong answer
       console.log(`Question: ${question}`);
       playerAnswer = readlineSync.question('Your answer: ');
-      if (`${correctResult}` === playerAnswer) {
+      if (correctResult === playerAnswer) {
         console.log('Correct!');
       } else {
         gameContinue = false;
