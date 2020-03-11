@@ -26,7 +26,7 @@ const getRound = () => {
   const symbol = getMathSymbol();
 
   const question = `${num1} ${symbol} ${num2}`;
-  const correctResult = calculateExpression(num1, num2, symbol);
+  const correctResult = calculateExpression(num1, num2, symbol).toString();
   return [correctResult, question];
 };
 

@@ -3,7 +3,7 @@ import readlineSync from 'readline-sync';
 const questionsCount = 3; // Total amount of Questions during the Game
 
 /* Game Engine */
-export default (gameIntro, gameRunner) => {
+export default (gameIntro, runGame) => {
   console.log('Welcome to the Brain Games!');
   console.log(gameIntro);
   console.log();
@@ -15,7 +15,7 @@ export default (gameIntro, gameRunner) => {
   let gameContinue = true; // Changes to false after the wrong answer
   for (let i = 0; i < questionsCount; i += 1) {
     if (gameContinue) {
-      const [correctResult, question] = gameRunner();
+      const [correctResult, question] = runGame();
       correctAnswer = correctResult; // initialized correctAnswer to prompt in case of wrong answer
       console.log(`Question: ${question}`);
       playerAnswer = readlineSync.question('Your answer: ');

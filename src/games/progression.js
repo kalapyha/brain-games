@@ -14,7 +14,7 @@ const getRound = () => {
   const index = randomNumber(0, progressionCount);
 
   const progression = createProgression(first, step, progressionCount);
-  const correctResult = progression[index];
+  const correctResult = progression[index].toString();
   progression.splice(index, 1, '..'); // hide num
   const question = progression.join(' ');
 
