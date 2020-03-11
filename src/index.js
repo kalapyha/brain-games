@@ -8,25 +8,26 @@ export default (gameIntro, runGame) => {
   console.log(gameIntro);
   console.log();
   const playerName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${playerName}! ${'\n'}`);
+  console.log(`Hello, ${playerName}!`);
+  console.log();
 
-  let correctAnswer;
-  let playerAnswer;
-  let gameContinue = true; // Changes to false after the wrong answer
-  for (let i = 0; i < questionsCount; i += 1) {
-    if (gameContinue) {
-      const [correctResult, question] = runGame();
-      correctAnswer = correctResult; // initialized correctAnswer to prompt in case of wrong answer
-      console.log(`Question: ${question}`);
-      playerAnswer = readlineSync.question('Your answer: ');
-      if (correctResult === playerAnswer) {
-        console.log('Correct!');
-      } else {
-        gameContinue = false;
-      }
+  const run = (round, iter = questionsCount, player = playerName) => {
+    if (!iter) {
+      console.log(`Congratulations, ${player}!`);
+      return true;
     }
-  }
-  return (gameContinue)
-    ? console.log(`Congratulations, ${playerName}!`)
-    : console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. Let's try again, ${playerName}!`);
+    const [correctResult, question] = runGame();
+    const correctAnswer = correctResult; // initialized
+    console.log(`Question: ${question}`);
+    const playerAnswer = readlineSync.question('Your answer: ');
+    if (correctResult === playerAnswer) {
+      console.log('Correct!');
+      run(round, iter - 1);
+    } else {
+      console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. Let's try again, ${player}!`);
+      return false;
+    }
+    return true;
+  };
+  run(runGame, questionsCount, playerName);
 };
