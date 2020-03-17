@@ -11,8 +11,8 @@ export default (gameIntro, makeRound) => {
   console.log(`Hello, ${playerName}!`);
   console.log();
 
-  const iter = (round, questionsCount, player) => {
-    if (!questionsCount) {
+  const iter = (round, questions, player) => {
+    if (!questions) {
       console.log(`Congratulations, ${player}!`);
       return true;
     }
@@ -21,7 +21,7 @@ export default (gameIntro, makeRound) => {
     const playerAnswer = readlineSync.question('Your answer: ');
     if (correctAnswer === playerAnswer) {
       console.log('Correct!');
-      iter(round, questionsCount - 1);
+      iter(round, questions - 1);
     } else {
       console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. Let's try again, ${player}!`);
       return false;
