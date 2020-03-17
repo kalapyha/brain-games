@@ -1,10 +1,10 @@
 # frontend-project-lvl1
 
 [![Build Status](https://travis-ci.com/kalapyha/frontend-project-lvl1.svg?branch=master)](https://travis-ci.com/kalapyha/frontend-project-lvl1)
-<a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
+<a href="https://codeclimate.com/github/kalapyha/frontend-project-lvl1"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
 
 
-*Please follow these instructions to run a game* 
+*Please follow these instructions to run a game*
 
 1. Using your terminal navigate to the game folder and run *make install*
 2. run *make publish*
