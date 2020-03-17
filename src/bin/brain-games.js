@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import menuChoice from '../games-starter';
+import choiceGame from '../menu';
 
-menuChoice();
+choiceGame();
