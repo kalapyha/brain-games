@@ -4,7 +4,7 @@ import playGame from '..';
 const signs = ['+', '-', '*'];
 const intro = 'What is the result of the expression?';
 
-const getMathSign = () => signs[randomNumber(0, signs.length)];
+const getMathSign = () => signs[randomNumber(0, signs.length - 1)];
 
 const calculateExpression = (num1, num2, sign) => {
   switch (sign) {
@@ -23,10 +23,10 @@ const calculateExpression = (num1, num2, sign) => {
 const getRound = () => {
   const num1 = randomNumber(1, 20); // first number
   const num2 = randomNumber(1, 20); // second number
-  const symbol = getMathSign();
+  const sign = getMathSign();
 
-  const question = `${num1} ${symbol} ${num2}`;
-  const correctResult = calculateExpression(num1, num2, symbol).toString();
+  const question = `${num1} ${sign} ${num2}`;
+  const correctResult = calculateExpression(num1, num2, sign).toString();
   return [correctResult, question];
 };
 

@@ -1,9 +1,8 @@
 import readlineSync from 'readline-sync';
 
-const questionsCount = 3; // Total amount of Questions during the Game
-
 /* Game Engine */
 export default (gameIntro, makeRound) => {
+  const questionsCount = 3; // Total amount of Questions during the Game
   console.log('Welcome to the Brain Games!');
   console.log(gameIntro);
   console.log();
@@ -11,22 +10,21 @@ export default (gameIntro, makeRound) => {
   console.log(`Hello, ${playerName}!`);
   console.log();
 
-  const iter = (round, questions, player) => {
-    if (!questions) {
-      console.log(`Congratulations, ${player}!`);
+  const iter = (counter) => {
+    if (!counter) {
+      console.log(`Congratulations, ${playerName}!`);
       return true;
     }
     const [correctAnswer, question] = makeRound();
     console.log(`Question: ${question}`);
     const playerAnswer = readlineSync.question('Your answer: ');
-    if (correctAnswer === playerAnswer) {
-      console.log('Correct!');
-      iter(round, questions - 1);
-    } else {
-      console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. Let's try again, ${player}!`);
+    if (correctAnswer !== playerAnswer) {
+      console.log(`'${playerAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'. Let's try again, ${playerName}!`);
       return false;
     }
+    console.log('Correct!');
+    iter(counter - 1);
     return true;
   };
-  iter(makeRound, questionsCount, playerName);
+  iter(questionsCount);
 };
